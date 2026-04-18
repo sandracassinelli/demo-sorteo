@@ -6,92 +6,120 @@
     <title>Sorteo Exclusivo | Demo Todas las Cremas</title>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --bg: #f5f5f5; --accent: #ff3366; --text: #1a1a1a; --success: #00e676; --error: #ff1744;}
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.4; overflow-x: hidden;}
-        
-        section { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; text-align: center;}
-        
-        .hero-title { 
-            font-family: 'Syne', sans-serif; 
-            font-size: clamp(2.5rem, 10vw, 6rem); 
-            text-transform: uppercase; 
-            line-height: 0.9;
-            margin-bottom: 20px;
-        }
-
-        .highlight { color: var(--accent); }
-
-        .form-card, .result-card {
-            background: white;
-            padding: 30px;
-            width: 100%;
-            max-width: 450px;
-            border: 3px solid var(--text);
-            box-shadow: 10px 10px 0px var(--text);
-            position: relative;
-        }
-
-        .result-card {
-    display: none; /* Se activa con el JS */
-    background: white;
-    padding: 30px;
-    width: 100%;
-    max-width: 450px;
-    border: 3px solid var(--text);
-    box-shadow: 10px 10px 0px var(--text);
-    
-    /* ESTO ASEGURA EL CENTRADO TOTAL */
-    margin: 0 auto; 
-    text-align: center;
-}
-
-.result-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 2rem;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-    color: var(--success);
-    
-    /* FUERZA EL CENTRADO DEL TEXTO */
-    width: 100%;
-    display: block;
-}
-
-        .btn-submit {
-            width: 100%;
-            padding: 20px;
-            background: var(--accent);
-            color: white;
-            border: 2px solid var(--text);
-            font-family: 'Syne', sans-serif;
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .btn-submit:hover { transform: translate(-3px, -3px); box-shadow: 5px 5px 0px var(--text); }
-
-        .footer-text { margin-top: 20px; font-size: 0.7rem; opacity: 0.6; text-align: center; }
-
-        /* Estilos para Resultados */
-        .status-icon { font-size: 4rem; margin-bottom: 15px; }
-        .result-title { font-family: 'Syne', sans-serif; font-size: 2rem; text-transform: uppercase; margin-bottom: 10px; }
-        
-        #success-result .result-title { color: var(--success); }
-        #error-result .result-title { color: var(--error); }
-
-        /* Contador */
-        .countdown { font-weight: 700; font-size: 1.2rem; color: var(--accent); margin-top: 10px;}
-
-        @media (max-width: 768px) {
-    .hero-title { 
-        font-size: 12vw; /* Antes era 15vw, 12vw es más seguro */
-        letter-spacing: -0.05em; 
+    :root { 
+        --bg: #f5f5f5; 
+        --accent: #ff3366; 
+        --text: #1a1a1a; 
+        --success: #00e676; 
+        --error: #ff1744;
     }
-}
-    </style>
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body { 
+        font-family: 'Inter', sans-serif; 
+        background: var(--bg); 
+        color: var(--text); 
+        line-height: 1.4; 
+        overflow-x: hidden;
+        width: 100%;
+    }
+    
+    section { 
+        min-height: 100vh; 
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+        justify-content: center; 
+        padding: 20px; 
+        width: 100%;
+    }
+    
+    .hero-title { 
+        font-family: 'Syne', sans-serif; 
+        font-size: clamp(2.5rem, 9vw, 5rem); /* Bajamos a 9vw para evitar desbordes */
+        text-transform: uppercase; 
+        text-align: center;
+        line-height: 0.9;
+        margin-bottom: 20px;
+        width: 100%;
+    }
+
+    .highlight { color: var(--accent); }
+
+    .form-card, .result-card {
+        background: white;
+        padding: 30px;
+        width: 95%; /* Usamos porcentaje para que respire en móviles */
+        max-width: 400px;
+        border: 3px solid var(--text);
+        box-shadow: 8px 8px 0px var(--text);
+        margin: 0 auto; /* Centrado horizontal total */
+    }
+
+    .result-card { 
+        display: none; 
+        text-align: center;
+    }
+
+    .form-group { 
+        margin-bottom: 15px; 
+        text-align: left; 
+        width: 100%;
+    }
+
+    label { 
+        display: block; 
+        font-weight: 700; 
+        text-transform: uppercase; 
+        font-size: 0.75rem; 
+        margin-bottom: 5px; 
+    }
+
+    input {
+        width: 100%; /* Esto alinea las cajas perfectamente */
+        padding: 12px;
+        border: 2px solid var(--text);
+        font-family: 'Inter', sans-serif;
+        font-size: 1rem;
+        display: block;
+    }
+
+    .btn-submit {
+        width: 100%;
+        padding: 18px;
+        background: var(--accent);
+        color: white;
+        border: 2px solid var(--text);
+        font-family: 'Syne', sans-serif;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    /* Ajuste para que "PARTICIPACIÓN CONFIRMADA" no se corte */
+    .result-title { 
+        font-family: 'Syne', sans-serif; 
+        font-size: 1.6rem; /* Bajamos un poco el tamaño para que entre */
+        text-transform: uppercase; 
+        margin-bottom: 10px;
+        color: var(--success);
+        line-height: 1.1;
+        word-wrap: break-word; /* Si es muy larga, rompe la línea pero no se sale */
+    }
+
+    .status-icon { font-size: 3rem; margin-bottom: 10px; }
+    .countdown { font-weight: 700; font-size: 1rem; color: var(--accent); margin-top: 15px; }
+    .footer-text { margin-top: 30px; font-size: 0.7rem; opacity: 0.6; text-align: center; }
+
+    @media (max-width: 768px) {
+        .hero-title { font-size: 12vw; letter-spacing: -0.05em; }
+        .form-card, .result-card { padding: 20px; width: 90%; }
+        .result-title { font-size: 1.4rem; }
+    }
+</style>
+
 </head>
 <body>
 
