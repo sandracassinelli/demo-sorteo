@@ -116,8 +116,15 @@
     @media (max-width: 768px) {
         .hero-title { font-size: 12vw; letter-spacing: -0.05em; }
         .form-card, .result-card { padding: 20px; width: 90%; }
-        .result-title { font-size: 1.4rem; }
+       .result-title { 
+        font-size: 1.2rem; 
+        line-height: 1.2;
+        word-break: break-word; 
+        hyphens: auto; /* Pone un guion si corta la palabra */
+        display: block;
+        width: 100%;
     }
+}
 </style>
 
 </head>
